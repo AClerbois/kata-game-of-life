@@ -78,6 +78,114 @@ namespace Aclerbois.GameOfLife.BusinessTests
         }
 
         [Fact]
+        public void Build_WithPatternBlinkerPeriod2WithNotSquareArray_HaveTheRightResult()
+        {
+            // Arrange
+            var generationSize = new GenerationSize(5, 6);
+            var generationNumber = 50;
+            var expectedGenerationNumber = generationNumber + 1;
+            var generation = new Generation(generationSize, generationNumber);
+            generation.CurrentGeneration[2, 1] = true;
+            generation.CurrentGeneration[2, 2] = true;
+            generation.CurrentGeneration[2, 3] = true;
+            var services = new NextGenerationService();
+
+            // Act
+            var newGeneration = services.Build(generation);
+
+            //Assert
+            Assert.Equal(expectedGenerationNumber, newGeneration.GenerationNumber);
+            // First line
+            Assert.False(newGeneration.CurrentGeneration[0, 0]);
+            Assert.False(newGeneration.CurrentGeneration[0, 1]);
+            Assert.False(newGeneration.CurrentGeneration[0, 2]);
+            Assert.False(newGeneration.CurrentGeneration[0, 3]);
+            Assert.False(newGeneration.CurrentGeneration[0, 4]);
+
+            // Second Line
+            Assert.False(newGeneration.CurrentGeneration[1, 0]);
+            Assert.False(newGeneration.CurrentGeneration[1, 1]);
+            Assert.True(newGeneration.CurrentGeneration[1, 2]);
+            Assert.False(newGeneration.CurrentGeneration[1, 3]);
+            Assert.False(newGeneration.CurrentGeneration[1, 4]);
+
+            // Thrid Line
+            Assert.False(newGeneration.CurrentGeneration[2, 0]);
+            Assert.False(newGeneration.CurrentGeneration[2, 1]);
+            Assert.True(newGeneration.CurrentGeneration[2, 2]);
+            Assert.False(newGeneration.CurrentGeneration[2, 3]);
+            Assert.False(newGeneration.CurrentGeneration[2, 4]);
+
+            // Fourth Line
+            Assert.False(newGeneration.CurrentGeneration[3, 0]);
+            Assert.False(newGeneration.CurrentGeneration[3, 1]);
+            Assert.True(newGeneration.CurrentGeneration[3, 2]);
+            Assert.False(newGeneration.CurrentGeneration[3, 3]);
+            Assert.False(newGeneration.CurrentGeneration[3, 4]);
+
+            // Fifth Line
+            Assert.False(newGeneration.CurrentGeneration[4, 0]);
+            Assert.False(newGeneration.CurrentGeneration[4, 1]);
+            Assert.False(newGeneration.CurrentGeneration[4, 2]);
+            Assert.False(newGeneration.CurrentGeneration[4, 3]);
+            Assert.False(newGeneration.CurrentGeneration[4, 4]);
+        }
+
+        [Fact]
+        public void Build_WithPatternBlinkerPeriod2WithNotSquareArray2_HaveTheRightResult()
+        {
+            // Arrange
+            var generationSize = new GenerationSize(6, 5);
+            var generationNumber = 50;
+            var expectedGenerationNumber = generationNumber + 1;
+            var generation = new Generation(generationSize, generationNumber);
+            generation.CurrentGeneration[2, 1] = true;
+            generation.CurrentGeneration[2, 2] = true;
+            generation.CurrentGeneration[2, 3] = true;
+            var services = new NextGenerationService();
+
+            // Act
+            var newGeneration = services.Build(generation);
+
+            //Assert
+            Assert.Equal(expectedGenerationNumber, newGeneration.GenerationNumber);
+            // First line
+            Assert.False(newGeneration.CurrentGeneration[0, 0]);
+            Assert.False(newGeneration.CurrentGeneration[0, 1]);
+            Assert.False(newGeneration.CurrentGeneration[0, 2]);
+            Assert.False(newGeneration.CurrentGeneration[0, 3]);
+            Assert.False(newGeneration.CurrentGeneration[0, 4]);
+
+            // Second Line
+            Assert.False(newGeneration.CurrentGeneration[1, 0]);
+            Assert.False(newGeneration.CurrentGeneration[1, 1]);
+            Assert.True(newGeneration.CurrentGeneration[1, 2]);
+            Assert.False(newGeneration.CurrentGeneration[1, 3]);
+            Assert.False(newGeneration.CurrentGeneration[1, 4]);
+
+            // Thrid Line
+            Assert.False(newGeneration.CurrentGeneration[2, 0]);
+            Assert.False(newGeneration.CurrentGeneration[2, 1]);
+            Assert.True(newGeneration.CurrentGeneration[2, 2]);
+            Assert.False(newGeneration.CurrentGeneration[2, 3]);
+            Assert.False(newGeneration.CurrentGeneration[2, 4]);
+
+            // Fourth Line
+            Assert.False(newGeneration.CurrentGeneration[3, 0]);
+            Assert.False(newGeneration.CurrentGeneration[3, 1]);
+            Assert.True(newGeneration.CurrentGeneration[3, 2]);
+            Assert.False(newGeneration.CurrentGeneration[3, 3]);
+            Assert.False(newGeneration.CurrentGeneration[3, 4]);
+
+            // Fifth Line
+            Assert.False(newGeneration.CurrentGeneration[4, 0]);
+            Assert.False(newGeneration.CurrentGeneration[4, 1]);
+            Assert.False(newGeneration.CurrentGeneration[4, 2]);
+            Assert.False(newGeneration.CurrentGeneration[4, 3]);
+            Assert.False(newGeneration.CurrentGeneration[4, 4]);
+        }
+
+        [Fact]
         public void Build_WithPatternBeaconPeriod2_HaveTheRightResult()
         {
             // Arrange

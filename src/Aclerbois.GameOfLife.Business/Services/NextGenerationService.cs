@@ -14,21 +14,21 @@ namespace Aclerbois.GameOfLife.Business.Services
                 {
                     bool newValue;
                     var neightbourgCount = GetSumOfNeightbourgs(generation, row, column);
-                    // Determine if the cell is alive or dead
-                    if (generation.CurrentGeneration[row, column])
-                    {
+                    if (IsAlive(generation, row, column))
                         newValue = neightbourgCount == 2 || neightbourgCount == 3;
-                    }
                     else
-                    {
                         newValue = neightbourgCount == 3;
-                    }
 
                     newGeneration.CurrentGeneration[row, column] = newValue;
                 }
             }
 
             return newGeneration;
+        }
+
+        private static bool IsAlive(Generation generation, int row, int column)
+        {
+            return generation.CurrentGeneration[row, column];
         }
 
         public int GetSumOfNeightbourgs(Generation generation, int indexRow, int indexColumn)
@@ -51,7 +51,7 @@ namespace Aclerbois.GameOfLife.Business.Services
             for (int row = startRowPosition; row <= endRowPosition; row++)
                 for (int column = startColumnPosition; column <= endColumnPosition; column++)
                     if (!(row == indexRow && column == indexColumn))
-                        count += generation.CurrentGeneration[row, column] ? 1 : 0;
+                        count += IsAlive(generation, row, column) ? 1 : 0;
 
 
             return count;
