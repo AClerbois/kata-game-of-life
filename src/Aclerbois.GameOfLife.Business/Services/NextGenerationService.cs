@@ -26,12 +26,12 @@ namespace Aclerbois.GameOfLife.Business.Services
             return newGeneration;
         }
 
-        private static bool IsAlive(Generation generation, int row, int column)
+        private bool IsAlive(Generation generation, int row, int column)
         {
             return generation.CurrentGeneration[row, column];
         }
 
-        public int GetSumOfNeightbourgs(Generation generation, int indexRow, int indexColumn)
+        private int GetSumOfNeightbourgs(Generation generation, int indexRow, int indexColumn)
         {
             var count = 0;
             var startRowPosition = indexRow == 0

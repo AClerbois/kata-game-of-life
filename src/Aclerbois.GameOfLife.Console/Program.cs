@@ -9,8 +9,8 @@ namespace Aclerbois.GameOfLife.Console
         static void Main(string[] args)
         {
             Drawer drawer = new Drawer();
-            int sleepTime = 50;
-            IPattern pattern = new CanonPattern();
+            int sleepTime = 500;
+            IPattern pattern = new RandomPattern();
             var nextGenerationService = new NextGenerationService();
             var generation = pattern.GetGeneration();
             do

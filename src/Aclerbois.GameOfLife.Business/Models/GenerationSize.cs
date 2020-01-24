@@ -1,6 +1,6 @@
 ﻿namespace Aclerbois.GameOfLife.Business.Models
 {
-    public class GenerationSize
+    public struct GenerationSize
     {
         public GenerationSize(int width, int height)
         {
