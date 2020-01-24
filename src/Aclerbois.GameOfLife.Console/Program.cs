@@ -10,7 +10,7 @@ namespace Aclerbois.GameOfLife.Console
         {
             Drawer drawer = new Drawer();
             int sleepTime = 500;
-            IPattern pattern = new RandomPattern();
+            IPattern pattern = new IColumnPattern();
             var nextGenerationService = new NextGenerationService();
             var generation = pattern.GetGeneration();
             do
