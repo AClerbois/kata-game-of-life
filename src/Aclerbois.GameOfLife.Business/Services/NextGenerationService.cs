@@ -14,9 +14,8 @@ namespace Aclerbois.GameOfLife.Business.Services
                 {
                     var neightbourgCount = GetSumOfNeightbourgs(generation, row, column);
                     bool newValue = neightbourgCount == 3;
-                    if (!newValue && IsAlive(generation, row, column))
-                        newValue = neightbourgCount == 2;
-
+                    if (neightbourgCount == 2)
+                        newValue = IsAlive(generation, row, column);
 
                     newGeneration.CurrentGeneration[row, column] = newValue;
                 }
